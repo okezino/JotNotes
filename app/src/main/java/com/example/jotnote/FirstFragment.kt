@@ -31,15 +31,46 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.addNote.setOnClickListener {
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-            binding.addTodo.visibility = View.VISIBLE
-        }
+        setAddNotesTodoListener()
+        setCancelBtnListener()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setNotesTodoBtnVisibility(){
+        with(binding){
+            addNoteText.visibility =  View.VISIBLE
+            addNote.visibility = View.VISIBLE
+            addTodo.visibility = View.VISIBLE
+            addTodoText.visibility = View.VISIBLE
+            addGeneralBtn.visibility = View.GONE
+            cancelBtn.visibility = View.VISIBLE
+        }
+    }
+
+    private fun disableNotesTodoBtnVisibility(){
+        with(binding){
+            addTodoText.visibility =  View.GONE
+            addTodo.visibility = View.GONE
+            addNoteText.visibility = View.GONE
+            addNote.visibility = View.GONE
+            addGeneralBtn.visibility = View.VISIBLE
+            cancelBtn.visibility = View.GONE
+        }
+    }
+
+    private fun setAddNotesTodoListener(){
+        binding.addGeneralBtn.setOnClickListener {
+            setNotesTodoBtnVisibility()
+        }
+    }
+
+    private fun setCancelBtnListener(){
+        binding.cancelBtn.setOnClickListener {
+            disableNotesTodoBtnVisibility()
+        }
     }
 }
