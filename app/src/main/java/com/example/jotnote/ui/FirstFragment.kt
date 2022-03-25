@@ -1,11 +1,9 @@
-package com.example.jotnote
+package com.example.jotnote.ui
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import com.example.jotnote.R
 import com.example.jotnote.databinding.FragmentFirstBinding
 
 /**
@@ -23,7 +21,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        (activity as MainActivity).title = "Jote Note"
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -33,6 +31,15 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setAddNotesTodoListener()
         setCancelBtnListener()
+
+    }
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_main, menu)
+
     }
 
     override fun onDestroyView() {

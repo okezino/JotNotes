@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JotNote">
         <activity
-            android:name=".SplashScreen"
+            android:name=".ui.SplashScreen"
             android:exported="true"
             android:label="@string/app_name_splash"
             >
@@ -22,7 +22,7 @@
 
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name_splash"
             android:theme="@style/Theme.JotNote.NoActionBar">

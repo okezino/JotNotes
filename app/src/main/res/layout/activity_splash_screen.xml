@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".SplashScreen">
+    tools:context=".ui.SplashScreen">
 
     <ImageView
         android:id="@+id/splash_image"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/jot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name_splash"
@@ -28,12 +28,12 @@
         app:layout_constraintTop_toBottomOf="@+id/splash_image" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/simple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_splash"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/jot" />
 </androidx.constraintlayout.widget.ConstraintLayout>
