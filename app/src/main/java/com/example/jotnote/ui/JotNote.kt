@@ -88,18 +88,24 @@ class JotNote : Fragment() {
 
     private fun addTodoClickListener(){
         binding.addTodoBtn.setOnClickListener {
-            navigateToAddTodoScreen()
+            navigateToAddNoteScreen()
         }
         binding.addTodo.setOnClickListener {
-            navigateToAddTodoScreen("To-do")
+            navigateToAddTodoScreen()
         }
 
         binding.addNote.setOnClickListener {
-            navigateToAddTodoScreen()
+            navigateToAddNoteScreen()
         }
     }
 
-    private fun navigateToAddTodoScreen(title : String = "Note"){
+    private fun navigateToAddTodoScreen(title : String = "Todo"){
+        findNavController().findDestination(R.id.todoFragment)?.label = "To-do"
+        val action = JotNoteDirections.actionJotNoteToTodoFragment(title)
+        findNavController().navigate(action)
+    }
+    private fun navigateToAddNoteScreen(title : String = "Note"){
+        findNavController().findDestination(R.id.todoFragment)?.label = "Notes "
         val action = JotNoteDirections.actionJotNoteToTodoFragment(title)
         findNavController().navigate(action)
     }

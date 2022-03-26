@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/todoFragment"
         android:name="com.example.jotnote.TodoFragment"
-        android:label="fragment_todo"
+        android:label="Notes"
         tools:layout="@layout/fragment_todo" >
         <argument
             android:name="todoType"

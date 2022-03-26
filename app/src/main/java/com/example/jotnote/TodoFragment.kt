@@ -7,15 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.jotnote.databinding.FragmentFirstBinding
+import com.example.jotnote.databinding.FragmentSecondBinding
+import com.example.jotnote.databinding.FragmentTodoBinding
 
 
 class TodoFragment : Fragment() {
-    val args : TodoFragmentArgs by navArgs()
+    private val args : TodoFragmentArgs by navArgs()
+    private var _binding: FragmentTodoBinding? = null
+    private val binding get() = _binding!!
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -23,14 +28,10 @@ class TodoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_todo, container, false)
+        _binding = FragmentTodoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-      findNavController().currentDestination?.label = args.todoType
-
-    }
 
 
 }
