@@ -16,6 +16,9 @@ class TodoListViewModel @Inject constructor(
     private val repository: RepositoryInterface
 ) : ViewModel() {
 
+    val todoTitle : String? = null
+    val todoDescription : String? = null
+
     private val _allTodoItem = MutableLiveData<List<Todo>>()
     val allTodoItem : LiveData<List<Todo>>
         get() {
@@ -56,6 +59,8 @@ class TodoListViewModel @Inject constructor(
             repository.getTodoById(id)
         }
     }
+
+
 
 
 

@@ -9,8 +9,8 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "todo_table")
 @Parcelize
 data class Todo(
-    @PrimaryKey
-    val id : Int,
+    @PrimaryKey(autoGenerate = true)
+    val id : Int? = null,
     val title : String,
     val status : Boolean,
     val type : Task,

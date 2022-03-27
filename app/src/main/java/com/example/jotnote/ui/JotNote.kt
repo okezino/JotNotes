@@ -5,6 +5,8 @@ import android.view.*
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jotnote.R
@@ -13,11 +15,15 @@ import com.example.jotnote.data.allTodo
 import com.example.jotnote.databinding.FragmentFirstBinding
 import com.example.jotnote.ui.adapter.TodoClickInterface
 import com.example.jotnote.ui.adapter.TodoListAdapter
+import com.example.jotnote.ui.viewmodel.TodoListViewModel
 
 
 class JotNote : Fragment(),TodoClickInterface {
 
     private var _binding: FragmentFirstBinding? = null
+    private val todoListViewModel : TodoListViewModel by activityViewModels()
+
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -37,6 +43,7 @@ class JotNote : Fragment(),TodoClickInterface {
         super.onViewCreated(view, savedInstanceState)
         activateClickListeners()
         launchHomeView()
+        updatedTodoList()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -130,12 +137,16 @@ class JotNote : Fragment(),TodoClickInterface {
     }
 
     private fun validateTodos():Boolean{
-        return allTodo.size == 0
+        var listSize = false
+        todoListViewModel.allTodoItem.observe(viewLifecycleOwner,{
+           listSize = it.isEmpty()
+        })
+        return listSize
     }
 
-    private fun showAllTodos(){
+    private fun showAllTodos(todo : List<Todo>){
         var newAdapter = TodoListAdapter(this).apply {
-            dataList = allTodo
+            dataList = todo.toMutableList()
         }
         with(binding.todoRecyclerview){
          layoutManager = LinearLayoutManager(context)
@@ -146,10 +157,17 @@ class JotNote : Fragment(),TodoClickInterface {
 
 
     private fun launchHomeView(){
-        if(validateTodos()) showEmptyTodoScreen() else showAllTodos()
+        if(validateTodos()) showEmptyTodoScreen() else updatedTodoList()
     }
 
     override fun getTodoClicked(todo: Todo) {
        Toast.makeText(context,"wow",Toast.LENGTH_LONG).show()
+    }
+
+    private fun updatedTodoList(){
+        todoListViewModel.getAllTodoItem()
+        todoListViewModel.allTodoItem.observe(viewLifecycleOwner,{
+            showAllTodos(it)
+        })
     }
 }

@@ -4,15 +4,26 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import com.example.jotnote.data.Task
+import com.example.jotnote.data.Todo
 import com.example.jotnote.databinding.FragmentTodoBinding
+import com.example.jotnote.ui.viewmodel.TodoListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TodoFragment : Fragment() {
     private val args : TodoFragmentArgs by navArgs()
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
+    private val todoListViewModel : TodoListViewModel by activityViewModels()
+
+
+    var todoTitle : String? = null
+    var todoDescription : String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +57,13 @@ class TodoFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
-            R.id.action_done -> {}
+            R.id.action_done -> {
+                if(validateTask()){
+                    val todo1 = Todo(1,title = todoTitle!!,false, getTaskType(args.todoType),description = todoDescription!!,"12:00PM","19/09/2009")
+                    todoListViewModel.insertTodo(todo1)
+
+                } else Toast.makeText(context, "Empty Todo",Toast.LENGTH_LONG).show()
+            }
             R.id.action_undo -> {}
             R.id.action_redo -> {}
         }
@@ -62,15 +79,15 @@ class TodoFragment : Fragment() {
     private fun titleTextWatcher(){
         binding.taskTitle.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
+                todoTitle = p0.toString()
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                TODO("Not yet implemented")
+                todoTitle = p0.toString()
             }
 
         })
@@ -79,18 +96,29 @@ class TodoFragment : Fragment() {
     private fun descriptionTextWatcher(){
         binding.taskDescription.addTextChangedListener(object :TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
+                todoDescription = p0.toString()
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                TODO("Not yet implemented")
+                todoDescription = p0.toString()
             }
 
         })
+    }
+
+    private fun validateTask() : Boolean{
+        return !(todoTitle == null || todoDescription == null)
+    }
+
+    private fun getTaskType(type : String) : Task{
+        return when(type){
+            "Note" -> Task.NOTE
+            else -> Task.TODO
+        }
     }
 
 }
