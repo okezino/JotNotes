@@ -5,10 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.jotnote.databinding.FragmentFirstBinding
-import com.example.jotnote.databinding.FragmentSecondBinding
 import com.example.jotnote.databinding.FragmentTodoBinding
 
 
@@ -49,18 +46,20 @@ class TodoFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
-            R.id.jot -> {}
+            R.id.action_done -> {}
+            R.id.action_undo -> {}
+            R.id.action_redo -> {}
         }
 
         return super.onOptionsItemSelected(item)
     }
 
-    fun activateWatchersAndListeners(){
+    private fun activateWatchersAndListeners(){
         titleTextWatcher()
         descriptionTextWatcher()
     }
 
-    fun titleTextWatcher(){
+    private fun titleTextWatcher(){
         binding.taskTitle.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 TODO("Not yet implemented")
@@ -77,7 +76,7 @@ class TodoFragment : Fragment() {
         })
     }
 
-    fun descriptionTextWatcher(){
+    private fun descriptionTextWatcher(){
         binding.taskDescription.addTextChangedListener(object :TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 TODO("Not yet implemented")
