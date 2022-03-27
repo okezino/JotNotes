@@ -2,6 +2,7 @@ package com.example.jotnote.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.jotnote.R
@@ -31,6 +32,12 @@ class JotNote : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activateClickListeners()
+        launchHomeView()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
 
@@ -108,5 +115,26 @@ class JotNote : Fragment() {
         findNavController().findDestination(R.id.todoFragment)?.label = "Notes "
         val action = JotNoteDirections.actionJotNoteToTodoFragment(title)
         findNavController().navigate(action)
+    }
+
+    private fun showEmptyTodoScreen(){
+        with(binding){
+            welcomeImage.isVisible = true
+            emptyTodo.isVisible = true
+            addTodoBtn.isVisible = true
+        }
+    }
+
+    private fun validateTodos():Boolean{
+        return false
+    }
+
+    private fun showAllTodos(){
+
+    }
+
+
+    private fun launchHomeView(){
+        if(!validateTodos()) showEmptyTodoScreen() else showAllTodos()
     }
 }
