@@ -2,16 +2,20 @@ package com.example.jotnote.ui
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jotnote.R
+import com.example.jotnote.data.Todo
+import com.example.jotnote.data.allTodo
 import com.example.jotnote.databinding.FragmentFirstBinding
+import com.example.jotnote.ui.adapter.TodoClickInterface
+import com.example.jotnote.ui.adapter.TodoListAdapter
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class JotNote : Fragment() {
+
+class JotNote : Fragment(),TodoClickInterface {
 
     private var _binding: FragmentFirstBinding? = null
 
@@ -126,15 +130,26 @@ class JotNote : Fragment() {
     }
 
     private fun validateTodos():Boolean{
-        return false
+        return allTodo.size == 0
     }
 
     private fun showAllTodos(){
+        var newAdapter = TodoListAdapter(this).apply {
+            dataList = allTodo
+        }
+        with(binding.todoRecyclerview){
+         layoutManager = LinearLayoutManager(context)
+           adapter = newAdapter
+        }
 
     }
 
 
     private fun launchHomeView(){
-        if(!validateTodos()) showEmptyTodoScreen() else showAllTodos()
+        if(validateTodos()) showEmptyTodoScreen() else showAllTodos()
+    }
+
+    override fun getTodoClicked(todo: Todo) {
+       Toast.makeText(context,"wow",Toast.LENGTH_LONG).show()
     }
 }
