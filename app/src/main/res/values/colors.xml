@@ -11,5 +11,6 @@
 
 
     <color name="bg_color">#FAF8F8</color>
+    <color name="card_bg_color">#F1F1F1</color>
     <color name="tool_bar_color">#1F6B64</color>
 </resources>
