@@ -1,5 +1,7 @@
 package com.example.jotnote.data
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -15,5 +17,5 @@ interface TodoDao {
     suspend fun deleteTodoById(todo : Todo)
 
     @Query("SELECT * FROM todo_table")
-    fun getAllTodos() : Flow<List<Todo>>
+    fun getAllTodos() : LiveData<List<Todo>>
 }

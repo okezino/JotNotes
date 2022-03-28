@@ -19,27 +19,7 @@ class TodoListViewModel @Inject constructor(
     val todoTitle : String? = null
     val todoDescription : String? = null
 
-    private val _allTodoItem = MutableLiveData<List<Todo>>()
-    val allTodoItem : LiveData<List<Todo>>
-        get() {
-           return  _allTodoItem
-        }
-
-    private val _getTodoItem = MutableLiveData<Todo>()
-    val getTodoItem : LiveData<Todo>
-        get() {
-            return  _getTodoItem
-        }
-
-
-
-    fun getAllTodoItem(){
-        viewModelScope.launch {
-          repository.getAllTodos().collect {
-               _allTodoItem.value = it
-           }
-        }
-    }
+    var allTodoItem : LiveData<List<Todo>> = repository.getAllTodos()
 
     fun insertTodo(todo : Todo){
         viewModelScope.launch {

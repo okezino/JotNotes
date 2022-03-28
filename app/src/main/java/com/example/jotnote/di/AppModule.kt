@@ -18,9 +18,32 @@ object AppModule {
     @Singleton
     fun provideTodoDataBase(app: Application) : TodoDataBase{
 
-        return Room.databaseBuilder(app,TodoDataBase::class.java, "todo_db")
-            .build()
-    }
+
+
+            /**
+             * @Synchronisedlock
+             *When a thread calls Synchronised Lock, it acquires the lock of the scynchrozied block
+             * other threads dont have permission to call that same sycnchronised block as long as the
+             * previous thread which had aquired the synchronised lock does not release the lock.
+             *
+             * NOTE:If the synchrozied block is not there, multiple thread can be creating different instances
+             */
+
+            synchronized(this){
+                val instance = Room.databaseBuilder(
+                    app,
+                    TodoDataBase::class.java,
+                    "todo_db"
+                ).build()
+
+                return instance
+            }
+
+        }
+
+//        return Room.databaseBuilder(app,TodoDataBase::class.java, "todo_db")
+//            .build()
+
 
     @Provides
     @Singleton

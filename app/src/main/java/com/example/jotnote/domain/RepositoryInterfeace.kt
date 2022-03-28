@@ -1,5 +1,7 @@
 package com.example.jotnote.domain
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.jotnote.data.Todo
 import kotlinx.coroutines.flow.Flow
 
@@ -11,5 +13,5 @@ interface RepositoryInterface {
 
     suspend fun deleteTodoById(todo : Todo)
 
-    fun getAllTodos() : Flow<List<Todo>>
+    fun getAllTodos() : LiveData<List<Todo>>
 }

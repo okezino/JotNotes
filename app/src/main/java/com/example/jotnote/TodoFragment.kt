@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.jotnote.data.Task
 import com.example.jotnote.data.Todo
@@ -59,8 +60,9 @@ class TodoFragment : Fragment() {
         when(item.itemId){
             R.id.action_done -> {
                 if(validateTask()){
-                    val todo1 = Todo(1,title = todoTitle!!,false, getTaskType(args.todoType),description = todoDescription!!,"12:00PM","19/09/2009")
+                    val todo1 = Todo(title = todoTitle!!,status = false, type = getTaskType(args.todoType),description = todoDescription!!, time = "12:00PM", date = "19/09/2009")
                     todoListViewModel.insertTodo(todo1)
+                    findNavController().navigate(R.id.JotNote)
 
                 } else Toast.makeText(context, "Empty Todo",Toast.LENGTH_LONG).show()
             }

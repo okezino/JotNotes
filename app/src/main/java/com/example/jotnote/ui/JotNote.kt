@@ -23,10 +23,6 @@ class JotNote : Fragment(),TodoClickInterface {
     private var _binding: FragmentFirstBinding? = null
     private val todoListViewModel : TodoListViewModel by activityViewModels()
 
-
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -43,7 +39,7 @@ class JotNote : Fragment(),TodoClickInterface {
         super.onViewCreated(view, savedInstanceState)
         activateClickListeners()
         launchHomeView()
-        updatedTodoList()
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -136,12 +132,11 @@ class JotNote : Fragment(),TodoClickInterface {
         }
     }
 
-    private fun validateTodos():Boolean{
-        var listSize = false
-        todoListViewModel.allTodoItem.observe(viewLifecycleOwner,{
-           listSize = it.isEmpty()
-        })
-        return listSize
+
+    private fun validateTodos(list : List<Todo>){
+       if(list.isEmpty()){
+           showEmptyTodoScreen()
+       }else showAllTodos(list)
     }
 
     private fun showAllTodos(todo : List<Todo>){
@@ -155,9 +150,8 @@ class JotNote : Fragment(),TodoClickInterface {
 
     }
 
-
     private fun launchHomeView(){
-        if(validateTodos()) showEmptyTodoScreen() else updatedTodoList()
+       updatedTodoList()
     }
 
     override fun getTodoClicked(todo: Todo) {
@@ -165,9 +159,8 @@ class JotNote : Fragment(),TodoClickInterface {
     }
 
     private fun updatedTodoList(){
-        todoListViewModel.getAllTodoItem()
         todoListViewModel.allTodoItem.observe(viewLifecycleOwner,{
-            showAllTodos(it)
+           validateTodos(it)
         })
     }
 }

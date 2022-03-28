@@ -1,5 +1,7 @@
 package com.example.jotnote.domain
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.jotnote.data.Todo
 import com.example.jotnote.data.TodoDao
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +21,7 @@ class TodoRepositoryImpl(
         dao.deleteTodoById(todo)
     }
 
-    override fun getAllTodos(): Flow<List<Todo>> {
+    override fun getAllTodos(): LiveData<List<Todo>> {
         return dao.getAllTodos()
     }
 }
