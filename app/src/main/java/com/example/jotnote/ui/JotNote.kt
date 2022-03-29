@@ -1,6 +1,7 @@
 package com.example.jotnote.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -31,6 +32,7 @@ class JotNote : Fragment(),TodoClickInterface {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        launchHomeView()
         return binding.root
 
     }
@@ -38,8 +40,6 @@ class JotNote : Fragment(),TodoClickInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activateClickListeners()
-        launchHomeView()
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -136,7 +136,10 @@ class JotNote : Fragment(),TodoClickInterface {
     private fun validateTodos(list : List<Todo>){
        if(list.isEmpty()){
            showEmptyTodoScreen()
-       }else showAllTodos(list)
+       }else {
+           showNoEmptyTodoScreen()
+           showAllTodos(list)
+       }
     }
 
     private fun showAllTodos(todo : List<Todo>){
@@ -160,7 +163,18 @@ class JotNote : Fragment(),TodoClickInterface {
 
     private fun updatedTodoList(){
         todoListViewModel.allTodoItem.observe(viewLifecycleOwner,{
+
+            Log.d("Jote","Note")
            validateTodos(it)
         })
+    }
+
+    private fun showNoEmptyTodoScreen(){
+        with(binding){
+            welcomeImage.isVisible = false
+            emptyTodo.isVisible = false
+            addTodoBtn.isVisible = false
+        }
+
     }
 }

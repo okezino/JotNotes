@@ -64,6 +64,7 @@ class TodoFragment : Fragment() {
                     todoListViewModel.insertTodo(todo1)
                     findNavController().navigate(R.id.JotNote)
 
+
                 } else Toast.makeText(context, "Empty Todo",Toast.LENGTH_LONG).show()
             }
             R.id.action_undo -> {}
