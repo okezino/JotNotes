@@ -42,5 +42,6 @@ class SplashScreen : AppCompatActivity() {
     private fun navigateToHomeScreen(){
         var intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }

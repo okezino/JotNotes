@@ -64,7 +64,8 @@ class TodoFragment : Fragment() {
                 if(validateTask()){
                     val todo1 = Todo(title = todoTitle!!,status = false, type = getTaskType(args.todoType),description = todoDescription!!, time = binding.timeIcon.text.toString(), date = binding.dateIcon.text.toString())
                     todoListViewModel.insertTodo(todo1)
-                    findNavController().navigate(R.id.JotNote)
+                    val action = TodoFragmentDirections.actionTodoFragmentToJotNote()
+                    findNavController().navigate(action)
 
 
                 } else Toast.makeText(context, "Empty Todo",Toast.LENGTH_LONG).show()

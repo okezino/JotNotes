@@ -13,8 +13,7 @@
 
         <action
             android:id="@+id/action_JotNote_to_todoFragment"
-            app:destination="@id/todoFragment"
-            app:popUpTo="@id/JotNote" />
+            app:destination="@id/todoFragment" />
     </fragment>
     <fragment
         android:id="@+id/todoFragment"
@@ -25,5 +24,10 @@
             android:name="todoType"
             app:argType="string"
              />
+        <action
+            android:id="@+id/action_todoFragment_to_JotNote"
+            app:destination="@id/JotNote"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
