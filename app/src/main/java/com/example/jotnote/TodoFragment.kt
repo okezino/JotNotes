@@ -13,6 +13,8 @@ import com.example.jotnote.data.Task
 import com.example.jotnote.data.Todo
 import com.example.jotnote.databinding.FragmentTodoBinding
 import com.example.jotnote.ui.viewmodel.TodoListViewModel
+import com.example.jotnote.util.getDatePicker
+import com.example.jotnote.util.getTime
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -77,6 +79,8 @@ class TodoFragment : Fragment() {
     private fun activateWatchersAndListeners(){
         titleTextWatcher()
         descriptionTextWatcher()
+        addDate()
+        addTime()
     }
 
     private fun titleTextWatcher(){
@@ -121,6 +125,22 @@ class TodoFragment : Fragment() {
         return when(type){
             "Note" -> Task.NOTE
             else -> Task.TODO
+        }
+    }
+
+    private fun addDate(){
+        binding.dateIcon.setOnClickListener {
+            getDatePicker(requireContext()){
+                binding.dateIcon.text = it
+            }
+        }
+    }
+
+    private fun addTime(){
+        binding.timerIcon.setOnClickListener {
+            getTime(requireContext()){
+                binding.timeIcon.text = it
+            }
         }
     }
 
