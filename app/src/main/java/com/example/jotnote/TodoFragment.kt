@@ -63,21 +63,23 @@ class TodoFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
-            R.id.action_done -> {
-
-               val response =  todoInputValidation(validateTodoReminder(),validateTask())
-                if(response == "Success"){
-                    val todo1 = Todo(title = todoTitle!!,status = false, type = getTaskType(args.todoType),description = todoDescription!!, time = binding.timeIcon.text.toString(), date = binding.dateIcon.text.toString())
-                    todoListViewModel.insertTodo(todo1)
-                    val action = TodoFragmentDirections.actionTodoFragmentToJotNote()
-                    findNavController().navigate(action)
-                } else Toast.makeText(context, response,Toast.LENGTH_LONG).show()
-            }
+            R.id.action_done -> {getDoneTodo()}
             R.id.action_undo -> {}
             R.id.action_redo -> {}
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun getDoneTodo(){
+        val response =  todoInputValidation(validateTodoReminder(),validateTask())
+        if(response == "Success"){
+            val todo1 = Todo(title = todoTitle!!,status = false, type = getTaskType(args.todoType),description = todoDescription!!, time = binding.timeIcon.text.toString(), date = binding.dateIcon.text.toString())
+            todoListViewModel.insertTodo(todo1)
+            val action = TodoFragmentDirections.actionTodoFragmentToJotNote()
+            findNavController().navigate(action)
+        } else Toast.makeText(context, response,Toast.LENGTH_LONG).show()
+
     }
 
     private fun activateWatchersAndListeners(){

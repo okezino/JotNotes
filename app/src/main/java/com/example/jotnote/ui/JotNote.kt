@@ -30,7 +30,6 @@ class JotNote : Fragment(),TodoClickInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         launchHomeView()
         return binding.root
@@ -163,8 +162,6 @@ class JotNote : Fragment(),TodoClickInterface {
 
     private fun updatedTodoList(){
         todoListViewModel.allTodoItem.observe(viewLifecycleOwner,{
-
-            Log.d("Jote","Note")
            validateTodos(it)
         })
     }
