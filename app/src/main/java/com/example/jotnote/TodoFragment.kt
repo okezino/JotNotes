@@ -62,7 +62,7 @@ class TodoFragment : Fragment() {
         when(item.itemId){
             R.id.action_done -> {
                 if(validateTask()){
-                    val todo1 = Todo(title = todoTitle!!,status = false, type = getTaskType(args.todoType),description = todoDescription!!, time = "12:00PM", date = "19/09/2009")
+                    val todo1 = Todo(title = todoTitle!!,status = false, type = getTaskType(args.todoType),description = todoDescription!!, time = binding.timeIcon.text.toString(), date = binding.dateIcon.text.toString())
                     todoListViewModel.insertTodo(todo1)
                     findNavController().navigate(R.id.JotNote)
 
@@ -143,5 +143,7 @@ class TodoFragment : Fragment() {
             }
         }
     }
+
+
 
 }

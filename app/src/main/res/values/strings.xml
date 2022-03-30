@@ -16,7 +16,7 @@
     <string name="empty_notes">Empty Notes</string>
     <string name="add_reminder">Add Reminder</string>
     <string name="timer">__:__ MM</string>
-    <string name="date">__ /__ /____</string>
+    <string name="date">__ /__ /__</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="done">done</string>

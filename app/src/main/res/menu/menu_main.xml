@@ -2,10 +2,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.jotnote.ui.MainActivity">
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_export"
         android:orderInCategory="100"
+        android:title="export"
+        android:icon="@drawable/ic_baseline_import_export_24"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_send"
+        android:orderInCategory="100"
+        android:title="send"
+        android:icon="@drawable/ic_baseline_send_24"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_favorite"
+        android:orderInCategory="100"
+        android:title="favorite"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_copy"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_baseline_content_copy_24"
         android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_archive"
+        android:orderInCategory="100"
+        android:title="Archive"
+        android:icon="@drawable/ic_baseline_archive_24"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_pin"
+        android:orderInCategory="100"
+        android:title="Pin"
+        android:icon="@drawable/ic_baseline_push_pin_24"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_edit"
+        android:orderInCategory="100"
+        android:title="Edit"
+        android:icon="@drawable/ic_baseline_content_copy_24"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_backup"
+        android:orderInCategory="100"
+        android:title="Back up"
+        android:icon="@drawable/ic_baseline_cloud_upload_24"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="100"
+        android:title="Delete"
+        android:icon="@drawable/ic_baseline_delete_outline_24"
         app:showAsAction="never" />
 
     <item
