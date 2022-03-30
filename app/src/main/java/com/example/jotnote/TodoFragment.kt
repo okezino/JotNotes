@@ -15,6 +15,7 @@ import com.example.jotnote.databinding.FragmentTodoBinding
 import com.example.jotnote.ui.viewmodel.TodoListViewModel
 import com.example.jotnote.util.getDatePicker
 import com.example.jotnote.util.getTime
+import com.example.jotnote.util.todoInputValidation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +28,8 @@ class TodoFragment : Fragment() {
 
     var todoTitle : String? = null
     var todoDescription : String? = null
+    var todoDate : String? = null
+    var todoTime : String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,14 +64,14 @@ class TodoFragment : Fragment() {
 
         when(item.itemId){
             R.id.action_done -> {
-                if(validateTask()){
+
+               val response =  todoInputValidation(validateTodoReminder(),validateTask())
+                if(response == "Success"){
                     val todo1 = Todo(title = todoTitle!!,status = false, type = getTaskType(args.todoType),description = todoDescription!!, time = binding.timeIcon.text.toString(), date = binding.dateIcon.text.toString())
                     todoListViewModel.insertTodo(todo1)
                     val action = TodoFragmentDirections.actionTodoFragmentToJotNote()
                     findNavController().navigate(action)
-
-
-                } else Toast.makeText(context, "Empty Todo",Toast.LENGTH_LONG).show()
+                } else Toast.makeText(context, response,Toast.LENGTH_LONG).show()
             }
             R.id.action_undo -> {}
             R.id.action_redo -> {}
@@ -122,6 +125,10 @@ class TodoFragment : Fragment() {
         return !(todoTitle == null || todoDescription == null)
     }
 
+    private fun validateTodoReminder() : Boolean{
+        return !(todoDate == null || todoTime == null)
+    }
+
     private fun getTaskType(type : String) : Task{
         return when(type){
             "Note" -> Task.NOTE
@@ -133,6 +140,7 @@ class TodoFragment : Fragment() {
         binding.dateIcon.setOnClickListener {
             getDatePicker(requireContext()){
                 binding.dateIcon.text = it
+                todoDate = it
             }
         }
     }
@@ -141,8 +149,13 @@ class TodoFragment : Fragment() {
         binding.timerIcon.setOnClickListener {
             getTime(requireContext()){
                 binding.timeIcon.text = it
+                todoTime = it
             }
         }
+    }
+
+    private fun inputValidation(){
+
     }
 
 
