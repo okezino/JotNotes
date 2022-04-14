@@ -9,14 +9,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jotnote.R
-import com.example.jotnote.data.Todo
+import com.example.jotnote.data.TaskData
 import com.example.jotnote.databinding.FragmentFirstBinding
-import com.example.jotnote.presentation.adapter.TodoClickInterface
-import com.example.jotnote.presentation.adapter.TodoListAdapter
+import com.example.jotnote.presentation.adapter.TaskClickInterface
+import com.example.jotnote.presentation.adapter.TaskListAdapter
 import com.example.jotnote.presentation.viewmodel.TaskListViewModel
 
 
-class JotNote : Fragment(),TodoClickInterface {
+class JotNote : Fragment(),TaskClickInterface {
 
     private var _binding: FragmentFirstBinding? = null
     private val todoListViewModel : TaskListViewModel by activityViewModels()
@@ -129,7 +129,7 @@ class JotNote : Fragment(),TodoClickInterface {
     }
 
 
-    private fun validateTodos(list : List<Todo>){
+    private fun validateTodos(list : List<TaskData>){
        if(list.isEmpty()){
            showEmptyTodoScreen()
        }else {
@@ -138,8 +138,8 @@ class JotNote : Fragment(),TodoClickInterface {
        }
     }
 
-    private fun showAllTodos(todo : List<Todo>){
-        var newAdapter = TodoListAdapter(this).apply {
+    private fun showAllTodos(todo : List<TaskData>){
+        var newAdapter = TaskListAdapter(this).apply {
             dataList = todo.toMutableList()
         }
         with(binding.todoRecyclerview){
@@ -153,7 +153,7 @@ class JotNote : Fragment(),TodoClickInterface {
        updatedTodoList()
     }
 
-    override fun getTodoClicked(todo: Todo) {
+    override fun getTodoClicked(taskData: TaskData) {
        Toast.makeText(context,"wow",Toast.LENGTH_LONG).show()
     }
 

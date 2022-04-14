@@ -1,17 +1,15 @@
 package com.example.jotnote.domain
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.jotnote.data.Todo
-import kotlinx.coroutines.flow.Flow
+import com.example.jotnote.data.TaskData
 
 interface RepositoryInterface {
 
-    suspend fun insertTodo(todo: Todo)
+    suspend fun insertTodo(task: TaskData)
 
-    suspend fun getTodoById(id : Int) : Todo?
+    suspend fun getTodoById(id : Int) : TaskData?
 
-    suspend fun deleteTodo(todo : Todo)
+    suspend fun deleteTodo(todo : TaskData)
 
-    fun getAllTodos() : LiveData<List<Todo>>
+    fun getAllTodos() : LiveData<List<TaskData>>
 }

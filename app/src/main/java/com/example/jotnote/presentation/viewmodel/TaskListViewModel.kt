@@ -2,11 +2,11 @@ package com.example.jotnote.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.jotnote.data.Todo
+import com.example.jotnote.data.TaskData
 import com.example.jotnote.domain.RepositoryInterface
 import com.example.jotnote.domain.interactors.GetAllTaskUseCase
 import com.example.jotnote.domain.interactors.SaveTaskUseCase
-import com.example.jotnote.domain.states.AllTodos
+import com.example.jotnote.domain.states.AllTasks
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,20 +18,20 @@ class TaskListViewModel @Inject constructor(
     private val getAllTaskUseCase: GetAllTaskUseCase
 ) : ViewModel() {
 
-    var allTodoItem : AllTodos = getAllTaskUseCase.execute(Unit).todos
+    var allTodoItem : AllTasks = getAllTaskUseCase.execute(Unit).tasks
 
-    fun insertTodo(todo : Todo){
+    fun insertTodo(taskData: TaskData){
         viewModelScope.launch {
             saveTaskUseCase.execute(
-                SaveTaskUseCase.Params(todo)
+                SaveTaskUseCase.Params(taskData)
             )
         }
 
     }
 
-    fun deleteTodo(todo: Todo){
+    fun deleteTodo(taskData: TaskData){
         viewModelScope.launch {
-            repository.deleteTodo(todo)
+            repository.deleteTodo(taskData)
         }
     }
 

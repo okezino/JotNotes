@@ -10,13 +10,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.jotnote.R
-import com.example.jotnote.data.Task
-import com.example.jotnote.data.Todo
 import com.example.jotnote.databinding.FragmentTodoBinding
 import com.example.jotnote.presentation.viewmodel.TaskListViewModel
 import com.example.jotnote.common.getDatePicker
 import com.example.jotnote.common.getTime
 import com.example.jotnote.common.todoInputValidation
+import com.example.jotnote.data.TaskData
+import com.example.jotnote.data.TaskType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -75,7 +75,7 @@ class TodoFragment : Fragment() {
     private fun getDoneTodo(){
         val response =  todoInputValidation(validateTodoReminder(),validateTask())
         if(response == "Success"){
-            val todo1 = Todo(title = todoTitle!!,status = false, type = getTaskType(args.todoType),description = todoDescription!!, time = binding.timeIcon.text.toString(), date = binding.dateIcon.text.toString())
+            val todo1 = TaskData(title = todoTitle!!,status = false, type = getTaskType(args.todoType),description = todoDescription!!, time = binding.timeIcon.text.toString(), date = binding.dateIcon.text.toString())
             todoListViewModel.insertTodo(todo1)
             val action = TodoFragmentDirections.actionTodoFragmentToJotNote()
             findNavController().navigate(action)
@@ -132,10 +132,10 @@ class TodoFragment : Fragment() {
         return !(todoDate == null || todoTime == null)
     }
 
-    private fun getTaskType(type : String) : Task{
+    private fun getTaskType(type : String) : TaskType{
         return when(type){
-            "Note" -> Task.NOTE
-            else -> Task.TODO
+            "Note" -> TaskType.NOTE
+            else -> TaskType.TODO
         }
     }
 

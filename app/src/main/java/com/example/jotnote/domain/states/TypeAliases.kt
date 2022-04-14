@@ -4,4 +4,4 @@ import androidx.lifecycle.LiveData
 import com.example.jotnote.data.TaskData
 
 
-typealias AllTodos = LiveData<List<TaskData>>
+typealias AllTasks = LiveData<List<TaskData>>
