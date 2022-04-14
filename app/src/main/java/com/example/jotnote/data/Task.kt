@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 
-@Entity(tableName = "todo_table")
+@Entity(tableName = "task_table")
 @Parcelize
 data class TaskData(
     @PrimaryKey(autoGenerate = true)

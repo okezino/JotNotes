@@ -29,14 +29,12 @@ object AppModule {
              * NOTE:If the synchrozied block is not there, multiple thread can be creating different instances
              */
 
-            synchronized(this){
-                val instance = Room.databaseBuilder(
+            synchronized(this) {
+                return Room.databaseBuilder(
                     app,
                     TaskDataBase::class.java,
                     "todo_db"
                 ).build()
-
-                return instance
             }
 
         }
