@@ -1,4 +1,4 @@
-package com.example.jotnote.ui.adapter
+package com.example.jotnote.presentation.adapter
 
 import com.example.jotnote.data.Todo
 

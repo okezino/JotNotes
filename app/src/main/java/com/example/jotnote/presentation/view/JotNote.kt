@@ -1,22 +1,19 @@
-package com.example.jotnote.ui
+package com.example.jotnote.presentation.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jotnote.R
 import com.example.jotnote.data.Todo
-import com.example.jotnote.data.allTodo
 import com.example.jotnote.databinding.FragmentFirstBinding
-import com.example.jotnote.ui.adapter.TodoClickInterface
-import com.example.jotnote.ui.adapter.TodoListAdapter
-import com.example.jotnote.ui.viewmodel.TodoListViewModel
+import com.example.jotnote.presentation.adapter.TodoClickInterface
+import com.example.jotnote.presentation.adapter.TodoListAdapter
+import com.example.jotnote.presentation.viewmodel.TodoListViewModel
 
 
 class JotNote : Fragment(),TodoClickInterface {

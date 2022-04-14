@@ -1,4 +1,4 @@
-package com.example.jotnote.ui
+package com.example.jotnote.presentation.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

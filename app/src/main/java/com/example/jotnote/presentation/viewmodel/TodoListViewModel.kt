@@ -1,4 +1,4 @@
-package com.example.jotnote.ui.viewmodel
+package com.example.jotnote.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

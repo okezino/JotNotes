@@ -1,4 +1,4 @@
-package com.example.jotnote
+package com.example.jotnote.presentation.view
 
 import android.os.Bundle
 import android.text.Editable
@@ -9,10 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.jotnote.R
 import com.example.jotnote.data.Task
 import com.example.jotnote.data.Todo
 import com.example.jotnote.databinding.FragmentTodoBinding
-import com.example.jotnote.ui.viewmodel.TodoListViewModel
+import com.example.jotnote.presentation.viewmodel.TodoListViewModel
 import com.example.jotnote.util.getDatePicker
 import com.example.jotnote.util.getTime
 import com.example.jotnote.util.todoInputValidation

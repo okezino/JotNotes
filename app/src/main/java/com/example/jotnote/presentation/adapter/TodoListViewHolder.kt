@@ -1,4 +1,4 @@
-package com.example.jotnote.ui.adapter
+package com.example.jotnote.presentation.adapter
 
 import android.graphics.Paint
 import android.view.LayoutInflater

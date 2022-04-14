@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/JotNote"
-        android:name="com.example.jotnote.ui.JotNote"
+        android:name="com.example.jotnote.presentation.view.JotNote"
         android:label="Jot Note"
         tools:layout="@layout/fragment_first">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/todoFragment"
-        android:name="com.example.jotnote.TodoFragment"
+        android:name="com.example.jotnote.presentation.view.TodoFragment"
         android:label="Notes"
         tools:layout="@layout/fragment_todo" >
         <argument
