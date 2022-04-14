@@ -11,7 +11,7 @@ interface RepositoryInterface {
 
     suspend fun getTodoById(id : Int) : Todo?
 
-    suspend fun deleteTodoById(todo : Todo)
+    suspend fun deleteTodo(todo : Todo)
 
     fun getAllTodos() : LiveData<List<Todo>>
 }

@@ -14,7 +14,7 @@
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.14764492753623187" />
         <entry key="app/src/main/res/layout/fragment_todo.xml" value="0.15572916666666667" />
-        <entry key="app/src/main/res/layout/todo_layout_view.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/todo_layout_view.xml" value="0.25" />
         <entry key="app/src/main/res/menu/add_todo_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.15833333333333333" />
       </map>

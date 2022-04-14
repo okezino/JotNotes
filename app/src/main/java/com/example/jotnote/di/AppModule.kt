@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.jotnote.data.TodoDataBase
 import com.example.jotnote.domain.RepositoryInterface
-import com.example.jotnote.domain.TodoRepositoryImpl
+import com.example.jotnote.data.TodoRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,9 +40,6 @@ object AppModule {
             }
 
         }
-
-//        return Room.databaseBuilder(app,TodoDataBase::class.java, "todo_db")
-//            .build()
 
 
     @Provides
