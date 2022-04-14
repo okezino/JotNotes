@@ -14,7 +14,7 @@ class SaveTaskUseCase @Inject constructor(
 
     override suspend fun execute(params: Params) {
         with (params){
-            todoRepositoryInterface.deleteTodo(todo)
+            todoRepositoryInterface.insertTodo(todo)
         }
 
     }

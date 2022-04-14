@@ -1,4 +1,4 @@
-package com.example.jotnote.util
+package com.example.jotnote.common
 
 fun todoInputValidation(reminder : Boolean, input : Boolean) : String{
     var string = "Success"

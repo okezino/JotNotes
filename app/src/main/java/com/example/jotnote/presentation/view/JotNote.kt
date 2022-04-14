@@ -13,13 +13,13 @@ import com.example.jotnote.data.Todo
 import com.example.jotnote.databinding.FragmentFirstBinding
 import com.example.jotnote.presentation.adapter.TodoClickInterface
 import com.example.jotnote.presentation.adapter.TodoListAdapter
-import com.example.jotnote.presentation.viewmodel.TodoListViewModel
+import com.example.jotnote.presentation.viewmodel.TaskListViewModel
 
 
 class JotNote : Fragment(),TodoClickInterface {
 
     private var _binding: FragmentFirstBinding? = null
-    private val todoListViewModel : TodoListViewModel by activityViewModels()
+    private val todoListViewModel : TaskListViewModel by activityViewModels()
 
     private val binding get() = _binding!!
 

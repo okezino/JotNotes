@@ -1,4 +1,4 @@
-package com.example.jotnote.util
+package com.example.jotnote.common
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog

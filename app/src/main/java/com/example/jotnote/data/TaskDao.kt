@@ -6,16 +6,16 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface TodoDao {
+interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTodo(todo: Todo)
+    suspend fun insertTodo(taskData: TaskData)
 
     @Query("SELECT * FROM todo_table WHERE id = :id")
-    suspend fun getTodoById(id : Int) : Todo?
+    suspend fun getTodoById(id : Int) : TaskData?
 
     @Delete()
-    suspend fun deleteTodo(todo : Todo)
+    suspend fun deleteTodo(taskData : TaskData)
 
     @Query("SELECT * FROM todo_table")
-    fun getAllTodos() : LiveData<List<Todo>>
+    fun getAllTodos() : LiveData<List<TaskData>>
 }

@@ -6,12 +6,12 @@ import com.example.jotnote.domain.RepositoryInterface
 
 
 
-class TodoRepositoryImpl(private val dao: TodoDao) : RepositoryInterface, BaseRepositoryService() {
-    override suspend fun insertTodo(todo: Todo) {
-        dao.insertTodo(todo)
+class TaskRepositoryImpl(private val dao: TaskDao) : RepositoryInterface, BaseRepositoryService() {
+    override suspend fun insertTodo(taskData: TaskData) {
+        dao.insertTodo(taskData)
     }
 
-    override suspend fun getTodoById(id: Int): Todo? = executeRequest {
+    override suspend fun getTodoById(id: Int): TaskData? = executeRequest {
         try {
             dao.getTodoById(id)
         } catch (e: Exception) {
@@ -19,11 +19,11 @@ class TodoRepositoryImpl(private val dao: TodoDao) : RepositoryInterface, BaseRe
         }
     }
 
-    override suspend fun deleteTodo(todo: Todo) {
+    override suspend fun deleteTodo(todo: TaskData) {
         dao.deleteTodo(todo)
     }
 
-    override fun getAllTodos(): LiveData<List<Todo>> = executeRequests{
+    override fun getAllTodos(): LiveData<List<TaskData>> = executeRequests{
         try {
             dao.getAllTodos()
         }catch (e : Exception){

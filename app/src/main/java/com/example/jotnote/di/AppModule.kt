@@ -2,9 +2,9 @@ package com.example.jotnote.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.jotnote.data.TodoDataBase
+import com.example.jotnote.data.TaskDataBase
 import com.example.jotnote.domain.RepositoryInterface
-import com.example.jotnote.data.TodoRepositoryImpl
+import com.example.jotnote.data.TaskRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ import javax.inject.Singleton
 object AppModule {
     @Provides
     @Singleton
-    fun provideTodoDataBase(app: Application) : TodoDataBase{
+    fun provideTodoDataBase(app: Application) : TaskDataBase{
 
 
 
@@ -32,7 +32,7 @@ object AppModule {
             synchronized(this){
                 val instance = Room.databaseBuilder(
                     app,
-                    TodoDataBase::class.java,
+                    TaskDataBase::class.java,
                     "todo_db"
                 ).build()
 
@@ -44,7 +44,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTodoRepository(db : TodoDataBase): RepositoryInterface{
-        return TodoRepositoryImpl(db.dao)
+    fun provideTodoRepository(db : TaskDataBase): RepositoryInterface{
+        return TaskRepositoryImpl(db.dao)
     }
 }

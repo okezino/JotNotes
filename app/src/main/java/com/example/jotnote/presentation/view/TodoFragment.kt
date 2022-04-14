@@ -13,10 +13,10 @@ import com.example.jotnote.R
 import com.example.jotnote.data.Task
 import com.example.jotnote.data.Todo
 import com.example.jotnote.databinding.FragmentTodoBinding
-import com.example.jotnote.presentation.viewmodel.TodoListViewModel
-import com.example.jotnote.util.getDatePicker
-import com.example.jotnote.util.getTime
-import com.example.jotnote.util.todoInputValidation
+import com.example.jotnote.presentation.viewmodel.TaskListViewModel
+import com.example.jotnote.common.getDatePicker
+import com.example.jotnote.common.getTime
+import com.example.jotnote.common.todoInputValidation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +24,7 @@ class TodoFragment : Fragment() {
     private val args : TodoFragmentArgs by navArgs()
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
-    private val todoListViewModel : TodoListViewModel by activityViewModels()
+    private val todoListViewModel : TaskListViewModel by activityViewModels()
 
 
     var todoTitle : String? = null

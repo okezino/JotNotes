@@ -5,11 +5,11 @@ import com.example.jotnote.domain.states.AllTodos
 import com.example.jotnote.domain.states.MainUseCase
 import javax.inject.Inject
 
-class GetAllTodoUseCase @Inject constructor(
+class GetAllTaskUseCase @Inject constructor(
     private val todoRepositoryInterface: RepositoryInterface
-) : MainUseCase<Unit, GetAllTodoUseCase.Response>() {
+) : MainUseCase<Unit, GetAllTaskUseCase.Response>() {
     data class Response(
-      private val  todo : AllTodos
+       val  todos : AllTodos
     )
 
     override fun execute(params: Unit): Response = Response(
